@@ -135,6 +135,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📬 Contact
 
-Your Name - [@your_twitter_handle](https://twitter.com/your_twitter_handle) - your.email@example.com
+Your Name -sai guggila
 
-Project Link: [https://github.com/YOUR_USERNAME/nexus-share](https://github.com/YOUR_USERNAME/nexus-share)
+
