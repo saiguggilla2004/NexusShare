@@ -1,0 +1,190 @@
+/* --- VARIABLES (Shared with PublicLinkModal for consistency) --- */
+:root {
+    --color-bg-overlay: rgba(0, 0, 0, 0.5);
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #4b5563;
+    --color-blue-500: #3b82f6;
+    --color-blue-600: #2563eb;
+    --color-blue-700: #1d4ed8;
+    --color-red-100: #fee2e2;
+    --color-red-400: #f87171;
+    --color-red-700: #b91c1c;
+    --color-green-100: #dcfce7;
+    --color-green-400: #4ade80;
+    --color-green-700: #15803d;
+    --color-gray-50: #f9fafb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-600: #4b5563;
+    --color-white: #ffffff;
+    --rounded-md: 0.375rem;
+    --rounded-lg: 0.5rem;
+}
+
+/* --- MODAL WRAPPER & CARD --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
+}
+
+.modal-card {
+    background-color: var(--color-white);
+    border-radius: var(--rounded-lg);
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 32rem;
+    /* max-w-md */
+}
+
+/* --- MODAL HEADER --- */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.modal-close-btn {
+    color: var(--color-gray-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.modal-close-btn:hover {
+    color: var(--color-gray-600);
+}
+
+.close-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* --- MODAL BODY & FILE INFO --- */
+.modal-body {
+    margin-top: 1rem;
+}
+
+.file-info {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+/* --- ALERTS (Error & Success) --- */
+.alert {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--rounded-md);
+    font-size: 0.875rem;
+}
+
+.alert-error {
+    background-color: var(--color-red-100);
+    border: 1px solid var(--color-red-400);
+    color: var(--color-red-700);
+}
+
+.alert-success {
+    background-color: var(--color-green-100);
+    border: 1px solid var(--color-green-400);
+    color: var(--color-green-700);
+}
+
+/* --- FORM STYLES --- */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--rounded-md);
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--color-blue-500);
+    box-shadow: 0 0 0 2px var(--color-blue-500);
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border-radius: var(--rounded-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-blue-500);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--color-blue-700);
+}
+
+.btn-secondary {
+    background-color: var(--color-white);
+    color: var(--color-text-secondary);
+    border-color: var(--color-gray-300);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--color-gray-50);
+}

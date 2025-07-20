@@ -1,0 +1,66 @@
+/* --- VARIABLES --- */
+:root {
+    --color-blue-600: #2563eb;
+    --color-gray-50: #f9fafb;
+    --color-gray-300: #d1d5db;
+    --color-gray-700: #374151;
+    --color-white: #ffffff;
+    --rounded-md: 0.375rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* --- TOGGLE CONTAINER --- */
+.view-toggle-container {
+    display: inline-flex;
+    border-radius: var(--rounded-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- BUTTON STYLES --- */
+.toggle-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out, color 150ms ease-in-out;
+
+    /* Default (inactive) state styles */
+    background-color: var(--color-white);
+    color: var(--color-gray-700);
+    border: 1px solid var(--color-gray-300);
+}
+
+.toggle-button:hover:not(.is-active) {
+    background-color: var(--color-gray-50);
+}
+
+/* Specific radius for first and last buttons */
+.toggle-button-left {
+    border-top-left-radius: var(--rounded-md);
+    border-bottom-left-radius: var(--rounded-md);
+}
+
+.toggle-button-right {
+    border-top-right-radius: var(--rounded-md);
+    border-bottom-right-radius: var(--rounded-md);
+    /* This negative margin makes the borders overlap, creating the single group effect */
+    margin-left: -1px;
+}
+
+/* Active state styles */
+.toggle-button.is-active {
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+    border-color: var(--color-blue-600);
+    /* Use z-index to ensure the active button's border is on top */
+    z-index: 10;
+}
+
+/* --- ICON STYLES --- */
+.toggle-icon {
+    width: 1rem;
+    height: 1rem;
+}

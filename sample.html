@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusShare - Comprehensive Project Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --sky-600: #0284c7;
+            --white: #ffffff;
+            --font-serif: 'Merriweather', serif;
+            --font-sans: 'Lato', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            color: var(--slate-700);
+            background-color: var(--slate-100);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 8.5in;
+            margin: 2rem auto;
+            padding: 3rem;
+            background-color: var(--white);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--sky-600);
+        }
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            color: var(--slate-900);
+            font-weight: 700;
+            line-height: 1.3;
+            scroll-margin-top: 2rem;
+        }
+        h1 {
+            font-size: 2.75rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.75rem;
+            border-bottom: 1px solid var(--slate-200);
+            padding-bottom: 0.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--slate-800);
+        }
+        p, ul, ol {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+        ul { padding-left: 25px; }
+        li { margin-bottom: 0.5rem; }
+        pre {
+            background-color: var(--slate-800);
+            color: var(--slate-200);
+            border: 1px solid var(--slate-700);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9rem;
+            font-family: var(--font-mono);
+        }
+        code {
+            font-family: var(--font-mono);
+            background-color: var(--slate-100);
+            color: var(--slate-700);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .schema-visualization {
+            width: 100%;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NexusShare: A Secure File Sharing and Collaboration Platform</h1>
+        </header>
+
+        <section id="introduction">
+            <h2>Introduction and Executive Summary</h2>
+            <p>This document provides a comprehensive overview of the design, architecture, and implementation of NexusShare, a full-stack file sharing platform. Developed using the MERN stack (MongoDB, Express.js, React, Node.js), NexusShare is engineered to provide a secure, scalable, and user-centric solution for modern file management and real-time collaboration. The platform addresses the growing need for a robust system that allows individuals and teams to store, manage, and share digital assets securely and efficiently.</p>
+            <p>The core objective of this project is to create a feature-rich ecosystem that encompasses secure user authentication, intuitive file and folder management, version control, and real-time sharing capabilities powered by WebSockets. By integrating advanced features such as expiring public links and granular user permissions, NexusShare aims to deliver a superior alternative to generic cloud storage solutions, focusing on security and collaboration. This document will detail the project's vision, technical architecture, feature set, and future roadmap.</p>
+        </section>
+
+        <section id="vision">
+            <h2>Project Vision, Goals, and Problem Statement</h2>
+            <h3>Vision</h3>
+            <p>Our vision is to create a seamless and secure digital environment where collaboration is not hindered by technical limitations. We envision NexusShare as the go-to platform for professionals, students, and teams who require a reliable and intuitive way to manage their digital workflow, ensuring that their data is both accessible and protected at all times.</p>
+            <h3>Problem Statement</h3>
+            <p>In today's digital landscape, users face several challenges with existing file management solutions. These include fragmented workflows, inadequate security for sensitive documents, difficulties in tracking file versions, and a lack of real-time collaboration features. Many platforms offer generic storage without the specialized tools needed for controlled sharing and collaborative work. NexusShare aims to solve these problems by providing a unified platform that integrates secure storage with powerful sharing and real-time notification features.</p>
+            <h3>Project Goals</h3>
+            <ol>
+                <li><strong>Deliver a Secure Platform:</strong> Implement end-to-end security, including robust user authentication, password hashing, and secure file access control.</li>
+                <li><strong>Provide an Intuitive User Experience:</strong> Design a clean, responsive, and easy-to-navigate user interface with features like drag-and-drop uploads and a clear file organization structure.</li>
+                <li><strong>Enable Real-Time Collaboration:</strong> Utilize WebSockets to provide instant notifications for file shares and other critical events, fostering a dynamic collaborative environment.</li>
+                <li><strong>Ensure Scalability and Reliability:</strong> Build the application on a scalable architecture that can handle a growing user base and increasing data loads, with a target uptime of 99.9%.</li>
+            </ol>
+        </section>
+        
+        <section id="tech-stack">
+            <h2>Technology Stack Selection and Justification</h2>
+            <p>The technology stack for NexusShare was chosen to create a high-performance, scalable, and maintainable application, leveraging the power of a unified JavaScript ecosystem.</p>
+            <ul>
+                <li><strong>Front-End (React):</strong> Chosen for its component-based architecture, which allows for the creation of a modular and reusable user interface. Its virtual DOM ensures a fast and responsive user experience, critical for interactive features like drag-and-drop. React's vast ecosystem and strong community support also reduce development time and provide access to a wide range of libraries.</li>
+                <li><strong>Back-End (Node.js & Express.js):</strong> Node.js's non-blocking, event-driven architecture is ideal for handling concurrent connections and real-time events, such as those managed by Socket.io. Express.js provides a minimalist and flexible framework for building the robust RESTful APIs that power the application, allowing for clean and organized route handling and middleware integration.</li>
+                <li><strong>Database (MongoDB):</strong> As a NoSQL database, MongoDB offers a flexible, JSON-like document model that maps directly to the application's data structures. This flexibility is perfect for storing varied metadata associated with files and users, and its native support for horizontal scaling (sharding) makes it well-suited for a growing application with large data volumes.</li>
+                <li><strong>Real-Time Communication (Socket.io):</strong> This library enables low-latency, bi-directional communication between clients and the server. It is the core technology behind NexusShare's real-time notification system for file shares and collaborative updates, providing a more dynamic user experience than traditional polling methods.</li>
+            </ul>
+        </section>
+
+        <section id="architecture-design">
+            <h2>System Architecture Design</h2>
+            <p>NexusShare is built upon a classic client-server architecture, optimized for performance and scalability. The system is logically divided into three primary layers: the frontend client, the backend server, and the database.</p>
+            <h3>Architectural Diagram</h3>
+            <div class="schema-visualization">
+                <svg viewBox="0 0 800 400">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                        </marker>
+                    </defs>
+                    <rect x="325" y="20" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/>
+                    <text x="345" y="55" style="font-size: 16px; font-weight: 600; fill: #1e293b;">React Client</text>
+                    <rect x="325" y="170" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/>
+                    <text x="340" y="205" style="font-size: 16px; font-weight: 600; fill: #1e293b;">Node.js Server</text>
+                    <rect x="325" y="320" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/>
+                    <text x="355" y="355" style="font-size: 16px; font-weight: 600; fill: #1e293b;">MongoDB</text>
+                    <line x1="400" y1="80" x2="400" y2="170" style="stroke: #94a3b8; stroke-width: 1.5;" marker-end="url(#arrowhead)"/>
+                    <text x="410" y="125" style="font-size: 12px; fill: #475569; font-weight: 500;">REST API / Socket.io</text>
+                    <line x1="400" y1="230" x2="400" y2="320" style="stroke: #94a3b8; stroke-width: 1.5;" marker-end="url(#arrowhead)"/>
+                    <text x="410" y="275" style="font-size: 12px; fill: #475569; font-weight: 500;">Mongoose ODM</text>
+                </svg>
+            </div>
+            <ul>
+                <li><strong>Client (React):</strong> A Single Page Application (SPA) that provides a dynamic and interactive user interface. It communicates with the backend via RESTful API calls for data operations and maintains a persistent WebSocket connection for real-time events.</li>
+                <li><strong>Backend (Node.js/Express):</strong> A server that exposes a set of RESTful APIs to handle business logic, including user authentication, file operations, and database interactions. It also manages WebSocket connections with clients to push real-time notifications.</li>
+                <li><strong>Database (MongoDB):</strong> The persistence layer where all application data, including user profiles, file metadata, folder structures, and sharing permissions, is stored.</li>
+            </ul>
+        </section>
+
+        <section id="db-design">
+            <h2>Database Design and Implementation</h2>
+            <p>The MongoDB schema is designed to be flexible and efficient, modeling the core entities of the application: Users, Files, and Folders. The relationships between these entities are managed through references.</p>
+            <h3>Schema Relationships Visualization</h3>
+             <div class="schema-visualization">
+                <svg viewBox="0 0 800 400">
+                    <defs>
+                        <marker id="arrowhead-db" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8" />
+                        </marker>
+                    </defs>
+                    <rect x="325" y="20" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/><text x="380" y="55" style="font-size: 16px; font-weight: 600; fill: #1e293b;">User</text>
+                    <rect x="50" y="200" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/><text x="90" y="235" style="font-size: 16px; font-weight: 600; fill: #1e293b;">Folder</text>
+                    <rect x="600" y="200" width="150" height="60" rx="8" style="stroke: #cbd5e1; stroke-width: 1.5; fill: #f8fafc;"/><text x="655" y="235" style="font-size: 16px; font-weight: 600; fill: #1e293b;">File</text>
+                    <line x1="400" y1="80" x2="400" y2="180" style="stroke: #94a3b8; stroke-width: 1.5;" marker-end="url(#arrowhead-db)" /><text x="410" y="130" style="font-size: 12px; fill: #475569; font-weight: 500;">Owns (many)</text>
+                    <path d="M400 180 C 400 220, 160 180, 125 200" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowhead-db)"/>
+                    <path d="M400 180 C 400 220, 640 180, 675 200" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowhead-db)"/>
+                    <line x1="200" y1="230" x2="600" y2="230" style="stroke: #94a3b8; stroke-width: 1.5;" marker-end="url(#arrowhead-db)"/><text x="360" y="220" style="font-size: 12px; fill: #475569; font-weight: 500;">Contains (many)</text>
+                    <path d="M675 260 C 750 320, 450 320, 400 80" stroke="#94a3b8" stroke-width="1.5" fill="none" marker-end="url(#arrowhead-db)" stroke-dasharray="5,5"/><text x="550" y="320" style="font-size: 12px; fill: #475569; font-weight: 500;">Shared With (many)</text>
+                </svg>
+            </div>
+            <h3>Collection Details</h3>
+            <ul>
+                <li><strong>User Collection:</strong> Stores user profile information, including name, email, and a hashed password. Each user is a distinct entity.</li>
+                <li><strong>File Collection:</strong> Contains metadata for every uploaded file, such as the original filename, MIME type, size, and path on the server. It holds a reference to the `owner` (a User) and an array of users it is `sharedWith`.</li>
+                <li><strong>Folder Collection:</strong> Defines the directory structure. Each folder has a name, an `owner`, and a reference to a `parent` folder, allowing for nested directories.</li>
+            </ul>
+        </section>
+
+        <section id="file-management-system">
+            <h2>File Management System</h2>
+            <h3>Upload Process</h3>
+            <p>The platform provides an intuitive file upload experience, supporting both drag-and-drop and traditional file selection. On the backend, <code>multer</code> middleware processes multipart/form-data requests, saving files to a designated <code>/uploads</code> directory with a unique system-generated filename to prevent conflicts. The original filename and other metadata are stored in the MongoDB `File` collection.</p>
+            <h3>Version Control</h3>
+            <p>To prevent accidental data loss, NexusShare includes a basic version control system. When a user uploads a file with the same name as an existing file, the system archives the old version by moving its details into a `versions` array within the file's document. This allows for the potential recovery of previous file states.</p>
+            <h3>Public Link System</h3>
+            <p>Users can generate secure public links for sharing files with external collaborators. Each link is associated with a unique, cryptographically secure token. For enhanced security, users can add an optional password and an expiration date to these links, ensuring that access is both controlled and time-limited.</p>
+        </section>
+
+        <section id="frontend-architecture">
+            <h2>Frontend Architecture</h2>
+            <h3>React Context Providers</h3>
+            <p>Global state is managed efficiently using React's Context API, avoiding the need for prop drilling. Two primary contexts are used:</p>
+            <ul>
+                <li><strong>AuthContext:</strong> Manages the user's authentication state, including the user object and JWT. It provides `login`, `register`, and `logout` functions to all components.</li>
+                <li><strong>NotificationContext:</strong> Manages real-time notifications received via Socket.io, handling the display of toast messages and a list of recent notifications.</li>
+            </ul>
+            <h3>Component Structure</h3>
+            <p>The frontend is organized into a logical structure of reusable components, categorized by feature:</p>
+            <ul>
+                <li><strong>Dashboard Components:</strong> Core UI for file management, including file lists, upload modals, and search bars.</li>
+                <li><strong>Authentication Components:</strong> Forms and logic for user login and registration.</li>
+                <li><strong>Sharing Components:</strong> Modals for sharing files with other users and generating public links.</li>
+                <li><strong>Layout Components:</strong> The main navigation bar and notification display elements.</li>
+            </ul>
+        </section>
+
+        <section id="real-time-features">
+            <h2>Real-time Features with Socket.io</h2>
+            <p>The real-time collaborative aspect of NexusShare is powered by Socket.io, which enables persistent, bi-directional communication between the client and server.</p>
+            <h3>Socket.io Integration</h3>
+            <p>Upon logging in, each client establishes a WebSocket connection with the server and joins a personal "room" identified by their unique user ID. This allows the server to target specific users with notifications.</p>
+            <h3>Notification System</h3>
+            <p>When a user shares a file, the backend emits a `file-shared` event to the recipient's personal room. The recipient's client listens for this event and triggers a real-time notification (e.g., a toast message), informing them of the new shared file without requiring a page refresh.</p>
+        </section>
+
+        <section id="api-design">
+            <h2>API Design and Documentation</h2>
+            <p>The API is designed following RESTful principles to provide a predictable and standardized interface for client-server communication. Endpoints are resource-oriented, and standard HTTP methods (GET, POST, DELETE) are used for all operations.</p>
+            <p>Comprehensive API documentation is generated using tools like Swagger/OpenAPI. This provides an interactive way for developers to explore endpoints, understand request/response formats, and test API functionality directly from the browser.</p>
+        </section>
+
+        <section id="security-considerations">
+            <h2>Security Considerations</h2>
+            <p>Security is a foundational aspect of NexusShare, integrated into every layer of the application to protect user data and ensure system integrity.</p>
+            <ul>
+                <li><strong>Authentication:</strong> Secure user authentication is managed with JSON Web Tokens (JWT). Tokens are signed on the server and have a limited expiration time to prevent misuse.</li>
+                <li><strong>Password Security:</strong> All user passwords are put through a one-way hashing algorithm (bcryptjs) before being stored, ensuring that even in the event of a data breach, the raw passwords are not exposed.</li>
+                <li><strong>Access Control:</strong> The backend enforces strict authorization checks for every request. Users can only access or modify files and folders they own or for which they have been granted specific permissions.</li>
+                <li><strong>Secure File Handling:</strong> File uploads are processed securely to prevent malicious file execution. Public links can be optionally protected with passwords and expiration dates to limit access.</li>
+            </ul>
+        </section>
+
+        <section id="development-methodology">
+            <h2>Development Methodology and Tools</h2>
+            <p>The project adopted the Agile Scrum methodology to facilitate iterative development, continuous feedback, and adaptability. Work was organized into two-week sprints, allowing for regular delivery of features and adjustments based on stakeholder input.</p>
+            <ul>
+                <li><strong>Version Control:</strong> Git was used for source code management, with GitHub serving as the central repository for collaboration and code reviews.</li>
+                <li><strong>Project Management:</strong> A tool like Jira or Trello was utilized to manage the product backlog, track sprint progress, and organize tasks.</li>
+                <li><strong>Communication:</strong> Slack was the primary tool for team communication, ensuring efficient collaboration and quick resolution of issues.</li>
+            </ul>
+        </section>
+        
+        <section id="testing-strategy">
+            <h2>Testing Strategy</h2>
+            <p>A multi-layered testing strategy was implemented to ensure the quality, reliability, and security of the platform.</p>
+            <ul>
+                <li><strong>Unit Testing:</strong> Jest and React Testing Library were used to test individual React components and backend utility functions in isolation.</li>
+                <li><strong>Integration Testing:</strong> Tests were conducted to verify the interactions between different parts of the application, such as ensuring the frontend correctly communicates with the backend API.</li>
+                <li><strong>End-to-End (E2E) Testing:</strong> Automated tools like Cypress were used to simulate complete user workflows, from login and file upload to sharing and logout, ensuring the entire system functions as expected.</li>
+            </ul>
+        </section>
+
+        <section id="deployment">
+            <h2>Deployment Strategy and Infrastructure</h2>
+            <p>A modern CI/CD (Continuous Integration/Continuous Deployment) pipeline automates the build, test, and deployment process. The platform is designed for cloud-native deployment to ensure scalability and high availability.</p>
+            <ul>
+                <li><strong>Containerization:</strong> The application is containerized using Docker, which ensures consistency across development, testing, and production environments.</li>
+                <li><strong>Cloud Infrastructure:</strong> The platform is deployed on a cloud provider like AWS, utilizing services such as EC2 for compute instances, S3 for file storage, and a managed MongoDB service like Atlas for the database.</li>
+                <li><strong>CI/CD Pipeline:</strong> Tools like Jenkins or GitHub Actions are used to automate the deployment pipeline. Every code commit triggers automated tests, and successful builds are deployed to a staging environment before being promoted to production.</li>
+            </ul>
+        </section>
+
+        <section id="dependencies-config">
+            <h2>Dependencies and Configuration</h2>
+            <h3>Key Dependencies</h3>
+            <ul>
+                <li><strong>Backend:</strong> <code>express</code>, <code>mongoose</code>, <code>cors</code>, <code>bcryptjs</code>, <code>jsonwebtoken</code>, <code>multer</code>, <code>socket.io</code>.</li>
+                <li><strong>Frontend:</strong> <code>react</code>, <code>react-router-dom</code>, <code>axios</code>, <code>socket.io-client</code>, <code>tailwindcss</code>.</li>
+            </ul>
+            <h3>Configuration</h3>
+            <p>Application configuration is managed through environment variables (<code>.env</code> files) for both the backend and frontend. This allows for easy configuration of database URIs, JWT secrets, and API endpoints without hardcoding values.</p>
+        </section>
+
+        <section id="api-testing">
+            <h2>API Testing Examples</h2>
+            <p>The following `cURL` commands are examples of how to interact with the NexusShare API for common operations.</p>
+            <h3>Register User</h3>
+            <pre><code>curl -X POST http://localhost:5000/api/auth/register \
+-H "Content-Type: application/json" \
+-d '{"name":"John Doe","email":"john@example.com","password":"password123"}'</code></pre>
+            <h3>Upload File</h3>
+            <pre><code>curl -X POST http://localhost:5000/api/files/upload \
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-F "file=@/path/to/your/file.pdf"</code></pre>
+            <h3>Share File</h3>
+            <pre><code>curl -X POST http://localhost:5000/api/share/file/YOUR_FILE_ID \
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{"email":"recipient@example.com","permissions":"download"}'</code></pre>
+        </section>
+
+        <section id="features-summary">
+            <h2>Key Features Summary</h2>
+            <h3>Implemented Features</h3>
+            <ul>
+                <li>✅ Secure User Authentication (JWT)</li>
+                <li>✅ Drag-and-Drop File and Folder Management</li>
+                <li>✅ Real-time File Sharing and Notifications via Socket.io</li>
+                <li>✅ Generation of Public, Password-Protected, and Expiring Links</li>
+                <li>✅ Basic File Version Control</li>
+                <li>✅ Responsive and Modern User Interface</li>
+            </ul>
+            <h3>Future Enhancements</h3>
+            <ul>
+                <li>📁 Advanced Collaboration Tools (e.g., in-app commenting)</li>
+                <li>👥 Team-based Workspaces and Permissions</li>
+                <li>📊 Analytics Dashboard for File Engagement</li>
+                <li>🔄 Integration with Third-Party Productivity Apps</li>
+                <li>📱 Native Mobile Applications for iOS and Android</li>
+            </ul>
+        </section>
+        
+    </div>
+</body>
+</html>

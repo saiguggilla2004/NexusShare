@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for NexusShare */
+.drag-over {
+  @apply border-blue-500 bg-blue-50;
+}
+
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.notification-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.notification-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.notification-exit {
+  opacity: 1;
+}
+
+.notification-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Loading animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* File type icons */
+.file-icon {
+  @apply w-8 h-8;
+}
+
+.file-icon.image {
+  @apply text-green-500;
+}
+
+.file-icon.pdf {
+  @apply text-red-500;
+}
+
+.file-icon.document {
+  @apply text-blue-500;
+}
+
+.file-icon.archive {
+  @apply text-yellow-500;
+}
+
+/* Progress bars */
+.progress-bar {
+  @apply w-full bg-gray-200 rounded-full h-2;
+}
+
+.progress-fill {
+  @apply bg-blue-600 h-2 rounded-full transition-all duration-300;
+}
+
+/* Hover effects */
+.file-card:hover {
+  @apply shadow-lg transform scale-105 transition-all duration-200;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-lg max-w-md w-full mx-4 p-6;
+}
+
+/* Toast notifications */
+.toast {
+  @apply fixed top-4 right-4 z-50 bg-white rounded-lg shadow-lg border border-gray-200 p-4 max-w-sm w-full;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .file-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-content {
+    @apply max-w-full mx-2;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    @apply bg-gray-900 text-white;
+  }
+
+  .dark-mode .modal-content {
+    @apply bg-gray-800 text-white;
+  }
+
+  .dark-mode .toast {
+    @apply bg-gray-800 text-white border-gray-700;
+  }
+}

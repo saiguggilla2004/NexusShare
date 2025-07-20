@@ -1,0 +1,203 @@
+/* --- VARIABLES & HELPERS --- */
+:root {
+    --color-blue-500: #3b82f6;
+    --color-blue-600: #2563eb;
+    --color-blue-700: #1d4ed8;
+    --color-gray-50: #f9fafb;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7281;
+    --color-gray-600: #4b5563;
+    --color-gray-900: #111827;
+    --color-red-500: #ef4444;
+    --color-white: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- MODAL WRAPPER --- */
+.preview-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.preview-modal {
+    background-color: var(--color-white);
+    border-radius: 0.5rem;
+    max-width: 56rem;
+    /* 896px */
+    max-height: 90vh;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- MODAL HEADER --- */
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.preview-title-info {
+    min-width: 0;
+    /* Prevents text from overflowing container */
+}
+
+.preview-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+}
+
+.preview-meta {
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+}
+
+.preview-close-btn {
+    color: var(--color-gray-400);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.preview-close-btn:hover {
+    color: var(--color-gray-600);
+}
+
+.close-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* --- MODAL CONTENT --- */
+.preview-content {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.preview-content-area,
+.preview-image-container,
+.preview-text-container,
+.preview-placeholder {
+    height: 100%;
+}
+
+/* --- LOADER --- */
+.preview-loader-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16rem;
+}
+
+.preview-loader {
+    animation: spin 1s linear infinite;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    border-bottom: 2px solid var(--color-blue-500);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- PREVIEW TYPES --- */
+.preview-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.preview-text-content {
+    white-space: pre-wrap;
+    font-size: 0.875rem;
+    color: var(--color-gray-900);
+    background-color: var(--color-gray-50);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+    height: 100%;
+    overflow-y: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* --- PLACEHOLDER (PDF, Info, Error) --- */
+.preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.placeholder-icon {
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon-pdf,
+.icon-error {
+    color: var(--color-red-500);
+}
+
+.icon-info {
+    color: var(--color-gray-400);
+}
+
+.placeholder-text {
+    text-align: center;
+}
+
+.placeholder-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-gray-900);
+}
+
+.placeholder-message {
+    color: var(--color-gray-500);
+    margin-bottom: 1rem;
+}
+
+.placeholder-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-blue-600);
+    color: var(--color-white);
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: background-color 150ms ease-in-out;
+}
+
+.placeholder-button:hover {
+    background-color: var(--color-blue-700);
+}
